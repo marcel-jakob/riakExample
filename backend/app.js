@@ -6,7 +6,15 @@ var Riak = require('basho-riak-client');
 var app = express();
 
 //connect to riak DB
-var client = new Riak.Client(['127.0.0.1:8089']);
+var client = new Riak.Client(['127.0.0.1:8098'], function(err,c){
+	if(err){
+		console.log(err)
+	}
+	else if(c){
+		//console.log(c.cluster)
+		console.log("connected to cluster")
+	}
+});
 
 // parse application/json
 app.use(bodyParser.json());
@@ -21,8 +29,29 @@ app.use(function(err, req, res, next) {
 
 //define POST response for route "/students"
 app.post('/newDataSet', function (req, res, next) {
-    // console.log(JSON.stringify(req.body, null, 2));         //only for test
-    students.push(new Student(req.body.firstName, req.body.lastName, req.body.matrikelNr));
+	var data = req.body
+    
+	var person = {
+        emailAddress: "bashoman@basho.com",
+        firstName: "Basho",
+        lastName: "Man"
+    }
+	
+	client.storeValue({
+                bucket: 'contributors',
+                key: person.emailAddress,
+                value: person
+            },
+            function(err, rslt) {
+                if(err){
+					console.log("error:" + err)
+				}
+				else if(rslt){
+					console.log(rslt)
+				}
+            }
+	);
+		
     res.writeHead(200, {"Content-Type": "text/html"});
     res.end("successfull");
     next();
