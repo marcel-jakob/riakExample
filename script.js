@@ -1,22 +1,25 @@
-var IPadress = 0
-var portNo = 0
+var IPadress = "127.0.0.1"
+var portNo = "8098"
 
 $( document ).ready(function(){
-	console.log("jquery works!")			
+	console.log("jquery works!")
+	newDataSet("test")			
 });	
 
 // should work
 var newDataSet = function(data){	
 	$.ajax({
-    url: "http://"+ IPadress +":"+ portNo +"/buckets/example/keys",
-    type: "post",
-    headers: {
-        Content-Type: "text/plain"
-    },
-    dataType: 'json',
-    success: function (data) {
-        console.info(data);
-    }
+	    url: "http://"+ IPadress +":"+ portNo +"/buckets/test/keys",
+	    type: "POST",
+	    headers: {
+		"Content-Type": "text/plain",
+		"Access-Control-Allow-Origin": "*",
+		"Access-Control-Allow-Methods": "*"
+	    },
+	    success: function (data) {
+		alert("success")
+		console.log(data);
+	    }
 	});
 }
 
