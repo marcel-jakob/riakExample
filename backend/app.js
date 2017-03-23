@@ -9,7 +9,6 @@ var bucket = 'contributors'
 var app = express();
 
 //connect to riak DB
-<<<<<<< HEAD
 var client = new Riak.Client(['127.0.0.1:8087'], function(err,c){
 	if(err){
 		console.log(err)
@@ -27,16 +26,6 @@ client.ping(function (err, rslt) {
           assert(rslt === true);
           console.log("connected to Riak node")
       }
-=======
-var client = new Riak.Client(['127.0.0.1:8098'], function(err,c){
-	if(err){
-		console.log(err)
-	}
-	else if(c){
-		//console.log(c.cluster)
-		console.log("connected to cluster")
-	}
->>>>>>> 975facbd9823a7b916cbfb869a1cd736db2bd863
 });
 
 // parse application/json
@@ -53,7 +42,6 @@ app.use(function(err, req, res, next) {
 
 //create a new data set
 app.post('/newDataSet', function (req, res, next) {
-<<<<<<< HEAD
 	console.log("POST /newDataSet")
 
 	var data = req.body   	
@@ -71,33 +59,6 @@ app.post('/newDataSet', function (req, res, next) {
 	);
     console.log("inserted: " + JSON.stringify(data) + " into bucket " + bucket)			
     res.status(201).send()
-=======
-	var data = req.body
-    
-	var person = {
-        emailAddress: "bashoman@basho.com",
-        firstName: "Basho",
-        lastName: "Man"
-    }
-	
-	client.storeValue({
-                bucket: 'contributors',
-                key: person.emailAddress,
-                value: person
-            },
-            function(err, rslt) {
-                if(err){
-					console.log("error:" + err)
-				}
-				else if(rslt){
-					console.log(rslt)
-				}
-            }
-	);
-		
-    res.writeHead(200, {"Content-Type": "text/html"});
-    res.end("successfull");
->>>>>>> 975facbd9823a7b916cbfb869a1cd736db2bd863
     next();
 });
 
