@@ -1,12 +1,12 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var Riak = require('basho-riak-client');
-var assert = require('assert');
+var express = require('express')
+var bodyParser = require('body-parser')
+var Riak = require('basho-riak-client')
+var assert = require('assert')
 
 var bucket = 'contributors'
 
 //construct express "application"
-var app = express();
+var app = express()
 
 //connect to riak DB
 var client = new Riak.Client(['127.0.0.1:8087'], function(err,c){
@@ -14,91 +14,112 @@ var client = new Riak.Client(['127.0.0.1:8087'], function(err,c){
 		console.log(err)
 		process.exit()
 	}
-});
+})
 
 //check if node is available
 client.ping(function (err, rslt) {
-      if (err) {
-          console.log(err)
-	  process.exit()
-      } else {
-          // On success, ping returns true
-          assert(rslt === true);
-          console.log("connected to Riak node")
-      }
-});
+	if (err) {
+  	console.log(err)
+		process.exit()
+	}
+	else {
+    // On success, ping returns true
+    assert(rslt === true)
+    console.log("connected to Riak node")
+	}
+})
 
 // parse application/json
-app.use(bodyParser.json());
-
-// error handling
-app.use(function(err, req, res, next) {
-    console.log("POST error handling")
-    console.error(err.stack);
-    res.status(500).send()
-    next();
-});
+app.use(bodyParser.json())
 
 
-//create a new data set
-app.post('/newDataSet', function (req, res, next) {
+//create a new data set (first value in JSON is used as key)
+app.post('/newDataSet', function (req, res) {
 	console.log("POST /newDataSet")
+	var data = req.body
 
-	var data = req.body   	
-	
 	client.storeValue({
-                bucket: bucket,
-                key: data.key,
-                value: data
-            },
-	function(err, rslt) {
-		if(err){
-					console.log("error: " + err)
-				}
+	              bucket: bucket,
+	              key: data[Object.keys(data)[0]],
+	              value: data
+	          },
+		function(err, rslt) {
+			if(err){
+				console.log("ERROR: " + err)
+			}
+			else{
+				console.log("inserted: " + JSON.stringify(data) + " into bucket " + bucket)
+				res.status(201).send("{key: " + data[Object.keys(data)[0]] + "}")
+			}
 		}
-	);
-    console.log("inserted: " + JSON.stringify(data) + " into bucket " + bucket)			
-    res.status(201).send()
-    next();
-});
+	)
+})
+
 
 //get all keys of a bucket
-app.get('/getAllKeys', function (req, res, next) {
-    console.log("GET /getAllKeys")
-	
-    client.listKeys({bucket: bucket},
-	    function (err, rslt) {
-		if (err) {
-		    console.log("error: " + err);
-		    res.status(404).send()			
-		} else {
-		    console.log(rslt)
+app.get('/getAllKeys', function (req, res) {
+	console.log("GET /getAllKeys")
+	client.listKeys({ bucket: bucket, stream: false},
+		function (err, rslt) {
+			if (err) {
+				console.log("ERROR: " + err)
+			}
+			else {
+				res.send(rslt.keys)
+			}
 		}
-	    }
-	);
-     next();
-});
+	)
+})
 
-//get one data set by key
-app.get('/getDataSet', function (req, res, next) {
-    console.log("GET /getDataSet")	
-   	
-    client.fetchValue({ bucket: bucket, key: '123', convertToJs: true},
-	    function (err, rslt) {
-		if (err) {
-		    console.log("error: " + err);
-		    res.status(404).send()			
-		} else {
-		    res.send(rslt.values.shift().value)
+//get one data set by key (defined to query parameter)
+app.get('/getDataSet', function (req, res) {
+	console.log("GET /getDataSet")
+	var key = req.query.key
+
+	if(key){
+		client.fetchValue({ bucket: bucket, key: key, convertToJs: true},
+			function (err, rslt) {
+				if (err) {
+					console.log("ERROR: " + err);
+				}
+				else {
+					res.send(rslt.values.shift().value)
+				}
+			})
 		}
-	    }
-	);
+})
 
-});
-
+//!!!!DOESN'T WORK get all data sets of a bucket
+app.get('/getAllDataSets', function (req, res) {
+	console.log("GET /getAllDataSets")
+	client.listKeys({ bucket: bucket, stream: false},
+		function (err, rslt) {
+			if (err) {
+				console.log("ERROR: " + err)
+			}
+			else {
+				var dataSets = []
+				var keys= rslt.keys
+				for (var x in keys) {
+					//console.log(rslt.keys[x])
+					client.fetchValue({ bucket: bucket, key: keys[x], convertToJs: true},
+						function (err, rslt) {
+							if (err) {
+								console.log("ERROR: " + err);
+							}
+							else {
+								dataSets.push(keys[x] + "   " + JSON.stringify(rslt.values.shift().value))
+							}
+						}
+					)
+				}
+				res.send(dataSets)
+			}
+		})
+	}
+)
 
 //start express server (application) on port 3000 and log announce to console
 var server = app.listen(3000, function () {
-    console.log('Express App listening at http://localhost:3000');
-});
-
+	console.log('Express App listening at http://localhost:3000')
+})
