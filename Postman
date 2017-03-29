@@ -1,0 +1,17 @@
+List all keys: GET http://localhost:8098/buckets/contributors/keys?keys=true
+
+Create new object: POST http://localhost:8098/buckets/contributors/keys/KEY  Header: Content-Type -> application/json      Body: {"email":"","user":""} 
+
+List all keys: GET http://localhost:8098/buckets/contributors/keys?keys=true
+
+Get object via key: GET http://localhost:8098/buckets/contributors/keys/KEY
+
+Update an object: PUT http://localhost:8098/buckets/contributors/keys/KEY  Header: Content-Type -> application/json      Body: {"email":"","user":""} 
+
+Get object via key: GET http://localhost:8098/buckets/contributors/keys/KEY
+
+Delete an object: DELETE http://localhost:8098/buckets/contributors/keys/KEY
+
+Get object via key: GET http://localhost:8098/buckets/contributors/keys/KEY
+
+List all keys: GET http://localhost:8098/buckets/contributors/keys?keys=true
