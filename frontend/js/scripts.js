@@ -22,6 +22,8 @@ var newDataSet = function(){
 			data: JSON.stringify(data),
 	    success: function (data) {
 				console.log(data);
+				$("#exampleInputEmail1").val("");
+				$("#exampleInputPassword1").val("");
 			},
 			error: function(error){
 				console.log(error);
@@ -62,8 +64,9 @@ var getDataSet = function(){
 	    url: "http://" + backend + "/getDataSet?key=" + key,
 	    type: "GET",
 	    success: function (data) {
-				console.log("Ergebnis: " + JSON.stringify(data));
+				console.log(JSON.stringify(data));
 				var username = data.user;
+				$("#exampleInputEmail2").val("");
 				$("#exampleUsername").html(username);
 			},
 			error: function(error){
