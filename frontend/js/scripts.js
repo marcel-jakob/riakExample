@@ -55,12 +55,16 @@ var getAllKeys = function(){
 }
 
 // should work
-var getDataSet = function(key){
+var getDataSet = function(){
+	var key = $("#exampleInputEmail2").val();
+
 	$.ajax({
 	    url: "http://" + backend + "/getDataSet?key=" + key,
 	    type: "GET",
 	    success: function (data) {
-				console.log(data);
+				console.log("Ergebnis: " + JSON.stringify(data));
+				var username = data.user;
+				$("#exampleUsername").html(username);
 			},
 			error: function(error){
 				console.log(error);
