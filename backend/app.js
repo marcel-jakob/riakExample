@@ -2,6 +2,7 @@ var express = require('express')
 var bodyParser = require('body-parser')
 var Riak = require('basho-riak-client')
 var assert = require('assert')
+var cors = require('cors')
 
 var bucket = 'contributors'
 
@@ -28,6 +29,8 @@ client.ping(function (err, rslt) {
     console.log("connected to Riak node")
 	}
 })
+
+app.use(cors())
 
 // parse application/json
 app.use(bodyParser.json())
@@ -89,7 +92,7 @@ app.get('/getDataSet', function (req, res) {
 		}
 })
 
-//!!!!DOESN'T WORK get all data sets of a bucket
+//!!!DOESN'T WORK get all data sets of a bucket
 app.get('/getAllDataSets', function (req, res) {
 	console.log("GET /getAllDataSets")
 	client.listKeys({ bucket: bucket, stream: false},
@@ -107,17 +110,20 @@ app.get('/getAllDataSets', function (req, res) {
 							if (err) {
 								console.log("ERROR: " + err);
 							}
-							else {
-								dataSets.push(keys[x] + "   " + JSON.stringify(rslt.values.shift().value))
+							else if(rslt) {
+								//dataSets.push(keys[x] + "   " + JSON.stringify(rslt.values.shift().value))
+								console.log(JSON.stringify(rslt.values.shift().value))
 							}
 						}
 					)
 				}
-				res.send(dataSets)
 			}
 		})
+		res.send("dataSets")
 	}
 )
+
+
 
 //start express server (application) on port 3000 and log announce to console
 var server = app.listen(3000, function () {
