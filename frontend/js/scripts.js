@@ -1,37 +1,70 @@
-var IPadress = "127.0.0.1"
-var portNo = "8098"
+var backend = "localhost:3000"
 
 $( document ).ready(function(){
 	console.log("jquery works!")
-	newDataSet("test")			
-});	
+
+	setInterval(function(){
+		getAllKeys()
+	}, 1000);
+});
 
 // should work
-var newDataSet = function(data){	
+var newDataSet = function(){
+	var data = {email: $("#exampleInputEmail1").val(), user: $("#exampleInputPassword1").val()}
+
+	console.log("pushing" + JSON.stringify(data))
 	$.ajax({
-	    url: "http://"+ IPadress +":"+ portNo +"/buckets/test/keys",
+	    url: "http://" + backend + "/newDataSet",
 	    type: "POST",
-	    headers: {
-		"Content-Type": "text/plain",
-		"Access-Control-Allow-Origin": "*",
-		"Access-Control-Allow-Methods": "*"
-	    },
+			headers: {
+				"Content-Type": "application/json"
+			},
+			data: JSON.stringify(data),
 	    success: function (data) {
-		alert("success")
-		console.log(data);
-	    }
+				console.log(data);
+			},
+			error: function(error){
+				console.log(error);
+			}
 	});
 }
 
-// doesn't work
-var readAllDataSets = function(){
+// should work
+var getAllKeys = function(){
 	$.ajax({
-    url: "http://"+ IPadress +":"+ portNo +"/buckets/example/keys",
-    type: "get",
-    dataType: 'json',
-    success: function (data) {
-        console.info(data);
-    }
+	    url: "http://" + backend + "/getAllKeys",
+	    type: "GET",
+	    success: function (data) {
+				console.log(data);
+				$( "#keyList" ).empty()
+				var kList = $('#keyList')
+				$.each(data, function(i)
+				{
+				    var li = $('<li/>')
+				        .attr('role', 'menuitem')
+				        .appendTo(kList)
+						var aaa = $('<p/>')
+				        .text(data[i])
+				        .appendTo(li);
+				});
+			},
+			error: function(error){
+				console.log(error);
+			}
+	});
+}
+
+// should work
+var getDataSet = function(key){
+	$.ajax({
+	    url: "http://" + backend + "/getDataSet?key=" + key,
+	    type: "GET",
+	    success: function (data) {
+				console.log(data);
+			},
+			error: function(error){
+				console.log(error);
+			}
 	});
 }
 

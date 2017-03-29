@@ -17,48 +17,64 @@
   <body>
 
     <div class="container-fluid">
-	<div class="row">
-    <div class="col-md-2"></div>
-		<div class="col-md-8">
-			<div class="jumbotron">
-				<h2>
-					Riak Example
-				</h2>
-				<p>
-					This is a simple example for showing off Riak DB
-				</p>
-			</div>
-			<ul class="nav nav-tabs">
-				<li class="active">
-					<a href="#">newDataSet</a>
-				</li>
-				<li>
-					<a href="#">ListKeys</a>
-				</li>
-			</ul>
-			<form role="form">
-				<div class="form-group">
+    	<div class="row">
+        <div class="col-md-2"></div>
+    		<div class="col-md-8">
+    			<div class="jumbotron">
+    				<h2>
+    					Riak Example
+    				</h2>
+    				<p>
+    					This is a simple example for showing off Riak DB
+    				</p>
+    			</div>
+    			<ul class="nav nav-tabs">
+    				<li class="active">
+    					<a data-toggle="tab" href="#menu1">Create data</a>
+    				</li>
+    				<li>
+    					<a data-toggle="tab" href="#menu2">List all keys</a>
+    				</li>
+            <li>
+              <a data-toggle="tab" href="#menu3">Get a data set by key</a>
+    				</li>
+    			</ul>
 
-					<label for="exampleInputEmail1">
-						Email address
-					</label>
-					<input type="email" class="form-control" id="exampleInputEmail1">
-				</div>
-				<div class="form-group">
+          <div class="tab-content">
+            <div id="menu1" class="tab-pane fade in active">
+              <form role="form">
+        				<div class="form-group">
 
-					<label for="exampleInputPassword1">
-						Password
-					</label>
-					<input type="password" class="form-control" id="exampleInputPassword1">
-				</div>
-				<button type="submit" class="btn btn-default">
-					Submit
-				</button>
-			</form>
-		</div>
-    <div class="col-md-2"></div>
-  </div>
-</div>
+        					<label for="exampleInputEmail1">
+        						Email address
+        					</label>
+        					<input type="text" class="form-control" id="exampleInputEmail1">
+        				</div>
+        				<div class="form-group">
+
+        					<label for="exampleInputPassword1">
+        						Username
+        					</label>
+        					<input type="text" class="form-control" id="exampleInputPassword1">
+        				</div>
+        				<button type="button" class="btn btn-default" onclick="newDataSet()">
+        					Submit
+        				</button>
+        			</form>
+            </div>
+            <div id="menu2" class="tab-pane fade">
+              <ul id="keyList"></ul>
+            </div>
+            <div id="menu3" class="tab-pane fade">
+              <h3>Menu 2</h3>
+              <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+            </div>
+          </div>
+
+    		</div>
+        <div class="col-md-2"></div>
+      </div>
+    </div>
 
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
