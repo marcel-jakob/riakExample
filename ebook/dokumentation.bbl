@@ -1,0 +1,28 @@
+\begin{thebibliography}{}
+
+\bibitem [\protect \citeauthoryear {%
+Basho%
+}{%
+Basho%
+}{%
+{\protect \APACyear {01.04.2017}}%
+}]{%
+Basho.01.04.2017}
+\APACinsertmetastar {%
+Basho.01.04.2017}%
+\begin{APACrefauthors}%
+Basho.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{01.04.2017}{}{}.
+\newblock
+\APACrefbtitle {Riak KV.} {Riak kv.}
+\newblock
+\APACaddressPublisher{Bellevue, Washington}{}.
+\newblock
+\begin{APACrefURL} [{01.04.2017}]\url{http://basho.com/products/riak-kv/}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\end{thebibliography}

@@ -1,0 +1,124 @@
+\section{Datamodel}
+Before designing a database, it is crucial to analyse the data and the requirements of the application. In contrast to relational databases there is no strongly recommended way to structure your data, like for example a normalized data model to avoid inconsistencies on updates. However, there are well established patterns which help developers to create their data model \cite{mdbinaction}. Later in this chapter, there will bw some examples for common design patterns. But at first, the following paragraphs will concentrate on the data concepts of MongoDB in detail.
+
+\subsection{Databases and Collections}
+As mentioned in the introduction, MongoDB is structured in databases collections and documents. MongoDB provides a mongo shell to communicate with the database. The code snippets provided in this chaptered can be performed on the mongo shell \cite{mdbdocu}.
+
+A Database can hold collections of documents. The creation of a database occurs automatically when the first document is pushed to a collection of this database. Thus, there is no command to create an empty database \cite{mdbdocu}. The following commands show how simply it is to select and create a new database by inserting its first document.
+
+\begin{lstlisting}[frame=single, caption=Create Database, label=createdb]
+use newDatabase
+db.newCollection.insertOne( { value: 2 } )
+\end{lstlisting}
+
+
+This example also shows the process of creating a new collection. As the database, the collection is created as soon as the first document got inserted. Certainly, there is also a function to explicitly create a new collection with an option to pass parameters affecting the collections behaviour. In the example in Listing \ref{createcol}, a collection with limited number of documents is created. All options can be found in the MongoDB documentation \cite{mdbdocu}.
+
+\begin{lstlisting}[frame=single, caption=Create Collection, label=createcol]
+db.createCollection( 'newCollection', { max: 1000 } )
+\end{lstlisting}
+
+\subsection{Documents}
+MongoDB stores documents in the BSON format. This format supports multiple datatypes. Many of them are common in the information technology, such as Double, String or Boolean. A full list would go beyond the scope of this book, but can be found in the BSON specification. In general, there are all types needed for object oriented programming \cite{bsonspec}. The chapter Queries and CRUD operations will treat the way BSON types can be used to query through documents. But before that, the concept of documents will be explained.
+
+\subsection{Embedded Documents and Referencing}
+The below example in Listing \ref{embdoc} shows how a document is structured. The field name \_id is reserved to be used as primary key. It has some special characteristics like being unique in the collection and immutable. To make sure this field is unique, it is recommended to use a unique ObjectId. If there is no value submitted with the document, an ObjectId is generated automatically \cite{mdbdocu}. 
+
+\begin{lstlisting}[frame=single, caption=Embedded Documents, label=embdoc]
+var newDocument = {
+	_id: <ObjectId>,
+	birthdate: new Date('Jan 01, 1990'), 
+	name: { 
+        last:	 'Doe', 
+        first: 'John' 
+    },
+	contact: {
+		phone: '12345678',
+		email: 'john@doe.com'
+	}
+}
+\end{lstlisting}
+
+Other fields can be added as needed. For example, a field containing the date of a person. Or an object containing the first and last name and another object with contact details. This concept of containing objects inside a document is called embedded sub-documents and has its own strength and weaknesses \cite{mdbdocu}. It may be resulting in a performance growth if the application always needs the document with its whole embedded data. But one common pattern for MongoDB says to consider whether embedded data or referencing is more suitable for the given situation \cite{mdbinaction}. By referencing, the embedded data is stored in a separate document with a reference to its related document. This concept is the foundation for creating normalised data models. How this can be implemented for the document with John Doe can be seen in the code snippet in Listing \ref{refdoc}.
+
+\begin{lstlisting}[frame=single, caption=Referencing Documents, label=refdoc]
+var newPerson = {
+	_id: <ObjectId1>,
+	birthdate: new Date('Jan 01, 1990'), 
+}
+
+var newName = {
+	_id: <ObjectId2>,
+	user_id: <ObjectId1>,	
+    last:	'Doe', 
+    first: 'John'
+}
+
+var newContact = {
+    _id: <ObjectId3>,
+    user_id: <ObjectId1>,	
+    phone: '12345678',
+	email: 'john@doe.com'
+
+}
+\end{lstlisting}
+
+When deciding whether referencing is reasonable, the atomicity of write operations also influences this decision. In MongoDB atomicity is only guaranteed on document level. As no single write operation can affect more documents, a normalised data model cannot be updated with one atomic operation. At this point denormalised data models have benefits over normalised ones. However, another design pattern for MongoDB is to overthink your overall database selection if you need atomic, consistent, isolated and durable operations, also known as ACID principles \cite{mdbinaction}. 
+
+\subsection{Validation}
+MongoDB comes with a way to validate documents by itself. There are different ways to handle documents which do not match its validation criteria. By default, invalid documents are rejected with an error. A collection, which would check if the new document contains a birthdate, would look like the following in Listing \ref{valcol}. Furthermore, it is also possible the check the fields for a certain data type \cite{mdbdocu}.
+
+\begin{lstlisting}[frame=single, caption=Validation for Collections, label=valcol]
+db.createCollection( 'users', {
+	validator: { 
+	    $or: [ { 
+	        birthdate: { $exists: true } 
+	    } 
+        ] 
+    }
+}
+\end{lstlisting}
+		
+\section{Queries and CRUD operations}
+MongoDB has several queries and operations to manage its data. This chapter gives a short overview of the most important operations.
+
+\subsection{Create (Insert)}
+Before searching for or working with data, the database needs information that can be worked with. How documents can be created was introduced while treating how to create a new database. This command inserts one document into a collection and can be found again in the Listing \ref{insdoc}. But there are also commands to insert an array of documents at once \cite{mdbbasics}.
+
+\begin{lstlisting}[frame=single, caption=Create (Insert), label=insdoc]
+db.newCollection.insertOne( {name: 'John', age: 30} )
+db.newCollection.insertMany( [ 
+    {name: 'Max', age: 20},
+    {name: 'Marie', age: 25} 
+] )
+\end{lstlisting}
+
+\subsection{Read (Find)}
+To find data stored in a MongoDB, operations to either find one or multiple documents can be used. This example in Listing \ref{findoc} shows both operations. The difference is that the second operations stops after the first result and it is generally advised if only one result is excepted. Of course, the results can also be filtered by field values as shown in line three, or sorted by values as shown in line four \cite{mdbbasics}.
+
+\begin{lstlisting}[frame=single, caption=Read (Find), label=findoc]
+db.newCollection.find()
+db.newCollection.findOne()
+db.newCollection.find( { 'name.last': 'Doe' } )
+db.newCollection.find().sort( { 'name.first': 1 } )
+\end{lstlisting}
+
+\subsection{Update}
+MongoDB also provides a function to update documents with three input parameters: the search criteria, the new object and options. It is important to understand that any fields that are not part of the new object are also removed from the old object, as it were completely rewritten. The option upsert implies to add any fields that do not exist yet. It is also possible to update multiple options that match the search criteria with one command \cite{mdbinaction}. An example for a basic update operation can be found in Listing \ref{upddoc}.
+
+\begin{lstlisting}[frame=single, caption=Update, label=upddoc]
+db.newCollection.update(
+    { name: 'John' }, 
+    { age: 21, name: 'John', lastname: 'Doe'  }, 
+    { upsert: true } )
+\end{lstlisting}
+
+\subsection{Delete}
+
+The last operation of CRUD examines the deletion of documents, collections or whole databases. The remove operation, as shown in line one of the code snippet in Listing \ref{deldoc}, removes all documents which match the criteria. The \_id field can help to be sure to only delete the right document. It can lead to conflicts if a documents is deleted without considering its references, because references from other documents will not change automatically \cite{mdbbasics}. Line 2 shows how to delete a collection and line 3 shows how to delete an entire database.
+
+\begin{lstlisting}[frame=single, caption=Delete, label=deldoc]
+db.newCollection.remove( { age: 20 } )
+db.newCollection.drop()
+db.dropDatabase()
+\end{lstlisting}

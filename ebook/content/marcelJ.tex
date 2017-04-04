@@ -1,0 +1,38 @@
+\section{Advantages}
+Since Riak is a distributed database there are different advantages making Riak special. Riak focuses on high availability, easy scalability and data safety. This is achieved through the distribution of the database across several nodes. The main advantages of the distributed approach are:
+\begin{itemize}
+	\item Installation
+	\item Scalability
+	\item Availability
+	\item Interaction
+	\item Error management
+\end{itemize}
+In the following subsections this concepts will be described in more detail.
+\subsection{Installation}
+The installation of Riak is easy and straight forward. Riak is available for various Linux distributions and Mac OS X. There is an Dabian package for Ubuntu, delivered through bashos web page (HTTP://docs.Bashocom/riak/kv/2.2.2/downloads/). This package can be easily installed with Ubuntus package manager. After the setup you are ready to go. With the command \textit{"riak start"} a Riak cluster with one node and the standard settings is started.
+\subsection{Scalability}
+Riak uses a distributed cluster approach built up of several nodes which makes it highly scalable. If there is a need for higher performance or stability there could be easily added several nodes to the cluster. This can be done even when the database is running. 
+Before a node can be added to a cluster it needs to be started with the \textit{"riak start"} command. After the node is running it can be added to a cluster with the \textit{"riak cluster join"} command.
+\subsection{Availability}
+A special feature of Riak is its high availability Riak uses a masterless system resulting in no single point of failure. If all nodes fail except one this last node will take all of the responsibilities of the other nodes. The cluster gets very slow, but it stays available and responsive.
+\subsection{Interaction}
+Another unique selling point of Riak is its native HTTP 1.1 API. This API is designed as RESTful Web service. Create, read, update and delete (CRUD) actions can be performed over the corresponding HTTP methods. This makes Riak a very flexible and handy database. 
+Besides that Riak guarantees client support for common programming languages like Java, Ruby, Python, C\#, Node.js, PHP, Erlang and Go.  
+\subsection{Error management}
+If multiple clients can write concurrently, potentially to the same key it is very likely that errors could happen. Therefore Riak has to use an error management. There is an logical approach called vector clock which abstracts the states of a data set on an analogous clock to track the history of updates to value. If the data is corrupted Riak through conflict writes, it can be restored through this mechanism. 
+\section{Disadvantages}
+As the previous section shows is the distributed approach of Riak a very beneficial and useful. But besides this advantages there are some downsides as well. Several nodes and the masterless concept lead to various problems like:
+ \begin{itemize}
+ 	\item Inconsistency
+ 	\item Vector-clocks
+ 	\item Data chaining
+ 	\item No rollbacks
+ \end{itemize}
+ In the next subsections we dig a little bit deeper in those problems.
+ \subsection{Inconsistency}
+ The main problem of highly-available, clustered systems like Riak is the validity of data sets. Due to the fact that there are no ACID transactions data sets can get inconsistent. There is no mechanism guaranteeing the transfer of a consistent state into another. This results in conflicting responses and anomalies which have to be handled.  
+ \subsection{Vector-clocks}
+ Although the error management concept of Riak is very reasoned the vector-clock system is leading to some difficulties. It is possible that Riak creates different values for an object on various nodes. These values are called siblings. This could lead to inconsistency and conflicts.
+ \subsection{Data chaining}
+ \subsection{No rollbacks}
+ \newpage

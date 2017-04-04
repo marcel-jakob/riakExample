@@ -1,0 +1,8 @@
+\section{Conclusion}
+As a conclusion one can say that the feature "CRUD"-Operations via REST is very useful but in newer versions \textbf{C}ross \textbf{O}rigin \textbf{R}esource \textbf{S}haring should be available. The example project could have been easier if CORS would have been available as you could send HTTP requests directly from the front-end to the database and there would be no need of a back-end. 
+\\
+Furthermore Riak is a \textbf{distributed}, \textbf{scalable} and \textbf{fault-tolerant} NoSQL database. Use cases are mostly applications where high availability of data is the most important point. Another use case are applications with fast growing data as you can add new servers/nodes to your cluster and the data is replicated automatically. 
+\\
+As already described in the chapter "Use Cases" Riak is especially useful for session data, documents, chat applications and business continuity as all of the use cases need a high availability of the data. 
+\\
+You should not use Riak if you expect the database to be always consistent since consistency is not possible because of the CAP-Theorem where Riak concentrates on \textbf{A}vailability and \textbf{P}artition Tolerance.	
