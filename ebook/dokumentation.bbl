@@ -25,4 +25,133 @@ Basho.%
   \end{APACrefURL}
 \PrintBackRefs{\CurrentBib}
 
+\bibitem [\protect \citeauthoryear {%
+Basho%
+}{%
+Basho%
+}{%
+{\protect \APACyear {06.04.2017}}%
+}]{%
+Basho.06.04.2017}
+\APACinsertmetastar {%
+Basho.06.04.2017}%
+\begin{APACrefauthors}%
+Basho.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{06.04.2017}{}{}.
+\newblock
+\APACrefbtitle {Riak KV~Documentation.} {Riak kv~documentation.}
+\newblock
+\APACaddressPublisher{Bellevue, Washington}{}.
+\newblock
+\begin{APACrefURL} [{06.04.2017}]\url{http://docs.basho.com/riak/kv/2.2.3/}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+{Bryan ssm}%
+}{%
+{Bryan ssm}%
+}{%
+{\protect \APACyear {06.04.2017}}%
+}]{%
+Bryanssm.06.04.2017}
+\APACinsertmetastar {%
+Bryanssm.06.04.2017}%
+\begin{APACrefauthors}%
+{Bryan ssm}.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{06.04.2017}{}{}.
+\newblock
+\APACrefbtitle {Java Management Extensions.} {Java management extensions.}
+\newblock
+\APACaddressPublisher{San Francisco,~California}{}.
+\newblock
+\begin{APACrefURL}
+  [{06.04.2017}]\url{https://en.wikipedia.org/wiki/Java_Management_Extensions}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+{Google Developers}%
+}{%
+{Google Developers}%
+}{%
+{\protect \APACyear {06.04.2017}}%
+}]{%
+GoogleDevelopers.06.04.2017}
+\APACinsertmetastar {%
+GoogleDevelopers.06.04.2017}%
+\begin{APACrefauthors}%
+{Google Developers}.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{06.04.2017}{}{}.
+\newblock
+\APACrefbtitle {Protocol Buffers.} {Protocol buffers.}
+\newblock
+\APACaddressPublisher{Mountain View, California}{}.
+\newblock
+\begin{APACrefURL}
+  [{06.04.2017}]\url{https://developers.google.com/protocol-buffers/}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+{L8 ManeValidus}%
+}{%
+{L8 ManeValidus}%
+}{%
+{\protect \APACyear {06.04.2017}}%
+}]{%
+L8ManeValidus.06.04.2017}
+\APACinsertmetastar {%
+L8ManeValidus.06.04.2017}%
+\begin{APACrefauthors}%
+{L8 ManeValidus}.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{06.04.2017}{}{}.
+\newblock
+\APACrefbtitle {Simple Network Management Protocol.} {Simple network management
+  protocol.}
+\newblock
+\APACaddressPublisher{San Francisco,~California}{}.
+\newblock
+\begin{APACrefURL}
+  [{06.04.2017}]\url{https://de.wikipedia.org/wiki/Simple_Network_Management_Protocol}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+{The Apache Software Foundation}%
+}{%
+{The Apache Software Foundation}%
+}{%
+{\protect \APACyear {06.04.2017}}%
+}]{%
+TheApacheSoftwareFoundation.06.04.2017}
+\APACinsertmetastar {%
+TheApacheSoftwareFoundation.06.04.2017}%
+\begin{APACrefauthors}%
+{The Apache Software Foundation}.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{06.04.2017}{}{}.
+\newblock
+\APACrefbtitle {Apache Solr.} {Apache solr.}
+\newblock
+\APACaddressPublisher{Forest Hill, Maryland}{}.
+\newblock
+\begin{APACrefURL} [{06.04.2017}]\url{http://lucene.apache.org/solr/}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
 \end{thebibliography}
