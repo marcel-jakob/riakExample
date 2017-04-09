@@ -5,6 +5,83 @@ Basho%
 }{%
 Basho%
 }{%
+{\protect \APACyear {01.04.17}}%
+{\protect \APACexlab {{\protect \BCnt {1}}}}}]{%
+Basho.01.04.17b}
+\APACinsertmetastar {%
+Basho.01.04.17b}%
+\begin{APACrefauthors}%
+Basho.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{01.04.17{\protect \BCnt {1}}}{}{}.
+\newblock
+\APACrefbtitle {Companies using Riak.} {Companies using riak.}
+\newblock
+\APACaddressPublisher{Bellevue, Washington}{}.
+\newblock
+\begin{APACrefURL} [{01.04.17}]\url{http://basho.com/about/customers/}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Basho%
+}{%
+Basho%
+}{%
+{\protect \APACyear {01.04.17}}%
+{\protect \APACexlab {{\protect \BCnt {2}}}}}]{%
+Basho.01.04.17c}
+\APACinsertmetastar {%
+Basho.01.04.17c}%
+\begin{APACrefauthors}%
+Basho.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{01.04.17{\protect \BCnt {2}}}{}{}.
+\newblock
+\APACrefbtitle {Installation of Riak on Ubuntu.} {Installation of riak on
+  ubuntu.}
+\newblock
+\APACaddressPublisher{Bellevue, Washington}{}.
+\newblock
+\begin{APACrefURL}
+  [{01.04.17}]\url{http://docs.basho.com/riak/kv/2.2.2/setup/installing/debian-ubuntu/}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Basho%
+}{%
+Basho%
+}{%
+{\protect \APACyear {01.04.17}}%
+{\protect \APACexlab {{\protect \BCnt {3}}}}}]{%
+Basho.01.04.17}
+\APACinsertmetastar {%
+Basho.01.04.17}%
+\begin{APACrefauthors}%
+Basho.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{01.04.17{\protect \BCnt {3}}}{}{}.
+\newblock
+\APACrefbtitle {Riak use cases.} {Riak use cases.}
+\newblock
+\APACaddressPublisher{Bellevue, Washington}{}.
+\newblock
+\begin{APACrefURL} [{01.04.2017}]\url{http://basho.com/use-cases/}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Basho%
+}{%
+Basho%
+}{%
 {\protect \APACyear {01.04.2017}}%
 }]{%
 Basho.01.04.2017}
@@ -73,6 +150,33 @@ Bryanssm.06.04.2017}%
 \newblock
 \begin{APACrefURL}
   [{06.04.2017}]\url{https://en.wikipedia.org/wiki/Java_Management_Extensions}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+{FH K{\"o}ln}%
+}{%
+{FH K{\"o}ln}%
+}{%
+{\protect \APACyear {01.04.17}}%
+}]{%
+FHKoln.01.04.17}
+\APACinsertmetastar {%
+FHKoln.01.04.17}%
+\begin{APACrefauthors}%
+{FH K{\"o}ln}, C\BPBI G.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{01.04.17}{}{}.
+\newblock
+\APACrefbtitle {Datenbanken Online Lexikon - Riak.} {Datenbanken online lexikon
+  - riak.}
+\newblock
+\APACaddressPublisher{Gummersbach}{}.
+\newblock
+\begin{APACrefURL}
+  [{01.04.17}]\url{http://wikis.gm.fh-koeln.de/wiki_db/Datenbanken/Riak/}
   \end{APACrefURL}
 \PrintBackRefs{\CurrentBib}
 

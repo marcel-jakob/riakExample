@@ -15,7 +15,7 @@
 \contentsline {section}{\numberline {1.4}Disadvantages}{7}{section.1.4}
 \contentsline {subsection}{\numberline {1.4.1}Inconsistency}{8}{subsection.1.4.1}
 \contentsline {subsection}{\numberline {1.4.2}Vector-clocks}{8}{subsection.1.4.2}
-\contentsline {subsection}{\numberline {1.4.3}Data chaining}{8}{subsection.1.4.3}
-\contentsline {subsection}{\numberline {1.4.4}No rollbacks}{8}{subsection.1.4.4}
-\contentsline {section}{\numberline {1.5}Conclusion}{9}{section.1.5}
+\contentsline {subsection}{\numberline {1.4.3}No rollbacks}{8}{subsection.1.4.3}
+\contentsline {section}{\numberline {1.5}Use Cases}{9}{section.1.5}
+\contentsline {section}{\numberline {1.6}Conclusion}{10}{section.1.6}
 \contentsline {chapter}{References}{i}{chapter*.7}
