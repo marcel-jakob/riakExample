@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.1.21)  6 APR 2017 20:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.1.21)  9 APR 2017 21:25
 entering extended mode
 **dokumentation.tex
 (dokumentation.tex
@@ -2054,11 +2054,11 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 70.
 Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 70.
  ) 
 Here is how much of TeX's memory you used:
- 38207 strings out of 493698
- 691173 string characters out of 3144409
+ 38209 strings out of 493698
+ 691193 string characters out of 3144409
  937930 words of memory out of 3000000
  40627 multiletter control sequences out of 15000+200000
- 65566 words of font info for 102 fonts, out of 3000000 for 9000
+ 65657 words of font info for 103 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  63i,11n,80p,10460b,534s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.enc}{C:/Program Files/M
@@ -2069,7 +2069,7 @@ iles/MiKTeX 2.9/fonts/type1/public/lm/lmri12.pfb><C:/Program Files/MiKTeX 2.9/f
 onts/type1/public/lm/lmro12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
 /lm/lmssbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmtt12.pfb>
 
-Output written on dokumentation.pdf (13 pages, 439323 bytes).
+Output written on dokumentation.pdf (13 pages, 439074 bytes).
 PDF statistics:
  308 PDF objects out of 1000 (max. 8388607)
  47 named destinations out of 1000 (max. 500000)

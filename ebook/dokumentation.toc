@@ -1,6 +1,6 @@
 \select@language {english}
 \contentsline {chapter}{\numberline {1}Riak}{1}{chapter.1}
-\contentsline {section}{\numberline {1.1}Introducion into Riak}{1}{section.1.1}
+\contentsline {section}{\numberline {1.1}Introduction into Riak}{1}{section.1.1}
 \contentsline {subsection}{\numberline {1.1.1}General Information}{1}{subsection.1.1.1}
 \contentsline {subsection}{\numberline {1.1.2}Riak Clustering}{2}{subsection.1.1.2}
 \contentsline {subsubsection}{\nonumberline Automatic re-distribution of data}{2}{section*.3}

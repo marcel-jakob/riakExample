@@ -2,7 +2,7 @@ Riak is available in two versions. There is Riak TS for time series data and Ria
 \section{Introduction into Riak}
 The following chapter provides an introduction into Riak and its main features. 
 \subsection{General Information}
-Riak is a distributed key-value NoSQL database designed for high availability use cases. As long as the client can reach one Riak server the data is available since data is saved across multiple servers. How the clustering works will be shown in the next chapter. \cite{Basho.06.04.2017}
+Riak is a distributed key-value NoSQL database designed for high availability use cases. As long as the client can reach one Riak node the data is available. The reason is that data is saved across multiple servers. How the clustering works will be shown in the next chapter. \cite{Basho.06.04.2017}
 \\
 Riak is available for different operating systems, e.g. Ubuntu, CentOS or Mac OS X but not for Windows. The installation is straight-forward because you just have to download a package from the official website and install the package. \cite{Basho.06.04.2017}
 \\ 
@@ -10,11 +10,11 @@ As data is saved across multiple servers even hardware or network failures can b
 \\
 Data is saved in buckets. A bucket in Riak can be compared with a table in a SQL-database. \cite{Basho.06.04.2017}
 \\ 
-Now if you have a look on the CAP-Theorem one can say that Riak definitely concentrates on "A" and "P" - Availability and Partition Tolerance. If your system needs high availability and you can not accept downtime Riak is probably the best solution. Another feature of Riak is its latency: since the CRUD-operations don't involve complex joins the requests are serviced promptly. \cite{Basho.06.04.2017}
+Now if you have a look on the CAP-Theorem one can say that Riak definitely concentrates on "A" and "P" - Availability and Partition Tolerance. If your system needs high availability and you can not accept downtime Riak is probably the best solution. Another feature of Riak is its latency: since the CRUD-operations do not involve complex joins the requests are serviced promptly. \cite{Basho.06.04.2017}
 \\
 On the other hand if your system needs a high consistency of the data Riak is not the right choice. \cite{Basho.06.04.2017}
 \subsection{Riak Clustering}
-The high availability of Riak can only be achieved by the Riak clustering. The official website of Riak recommends that there should be at least 5 nodes in one cluster. A node is a server in production environment - during the development of the software there can be more than one node on a server. \cite{Basho.06.04.2017}
+The high availability of Riak can only be achieved by the Riak clustering. The official website of Riak recommends that there should be at least five nodes in one cluster. A node is a server in production environment - during the development of the software there can be more than one node on a server. \cite{Basho.06.04.2017}
 \\
 All nodes have the same responsibility, this means there is no kind of master-node which has special tasks. \cite{Basho.06.04.2017}
 
@@ -27,9 +27,9 @@ The clustering is visible in the logo of Riak as well. There is one node and thr
 \end{figure}
 
 \subsubsection{Automatic re-distribution of data}
-When new servers are added or when machines are removed Riak automatically re-distributes the data with no downtime. Data is spread in the cluster until each node owns the same amount of data. So developers do not need to care about where the data is saved. Riak uses consistent hashing to distribute data evenly across the nodes in a cluster. Consistent hashing limits the reshuffling of keys when a hash-table structure is rebalanced. \cite{Basho.06.04.2017}
+When new servers are added or when machines are removed Riak automatically re-distributes the data with no downtime. Data is spread in the cluster until each node owns the same amount of data. This is why developers do not need to care about where the data is saved. Riak uses consistent hashing to distribute data evenly across the nodes in a cluster. Consistent hashing limits the reshuffling of keys when a hash-table structure is rebalanced. \cite{Basho.06.04.2017}
 \subsubsection{Intelligent Replication}
-Even if nodes go down the user should be able to read and write data. The replication scheme ensures this by setting a replication variable, that specifies the number of nodes on which a value will be replicated. The default number is three which means that each object is replicated three times. If Riak can access one node where the object is replicated it is available for the client. \cite{Basho.06.04.2017}
+Even if nodes fail the user should be able to read and write data. The replication scheme ensures the availability by setting a replication variable, that specifies the number of nodes on which a value will be replicated. The default number is three which means that each object is replicated three times. If Riak can access one node where the object is replicated it is available for the client. \cite{Basho.06.04.2017}
 \\ 
 The following picture describes the replication: 
 \begin{figure}[h]
